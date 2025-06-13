@@ -1,3 +1,3 @@
 //* parsing the file contents *//
 
-export default (readFile) => JSON.parse(readFile);
+export default readFile => JSON.parse(readFile)
