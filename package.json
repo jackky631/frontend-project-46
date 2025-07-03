@@ -8,7 +8,7 @@
   "description": "[![Actions Status](https://github.com/jackky631/frontend-project-46/actions/workflows/hexlet-check.yml/badge.svg)](https://github.com/jackky631/frontend-project-46/actions)",
   "main": "src/index.js",
   "scripts": {
-    "test": "jest"
+    "test": "NODE_OPTIONS=--experimental-vm-modules jest"
   },
   "repository": {
     "type": "git",
