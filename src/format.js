@@ -13,5 +13,5 @@ export default (data) => {
       return `   ${item.key}: ${item.value}`
     }
   })
-  return `\n${formatted.join('\n')}\n`
+  return `{\n${formatted.join('\n')}\n}`
 }
