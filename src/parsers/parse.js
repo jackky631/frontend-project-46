@@ -2,10 +2,14 @@
 import { load } from 'js-yaml'
 
 export default (readFile, format) => {
-  if (format === 'json') {
-    return JSON.parse(readFile)
-  }
-  if (format === 'yml' || format === 'yaml') {
-    return load(readFile)
+  switch (format) {
+    case 'json':
+      return JSON.parse(readFile)
+    case 'yaml':
+      return load(readFile)
+    case 'yml':
+      return load(readFile)
+    default:
+      throw new Error('File format not supported!')
   }
 }

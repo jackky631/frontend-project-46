@@ -8,3 +8,6 @@
 
 ## First demo
 [![asciicast](https://asciinema.org/a/xUxrTfoXNpOJYYzZfxMp8prbq.svg)](https://asciinema.org/a/xUxrTfoXNpOJYYzZfxMp8prbq)
+
+## Demo gendiff with YAML files
+[![asciicast](https://asciinema.org/a/Cd1FJV6DxePmg8SNVmRDOa5if.svg)](https://asciinema.org/a/Cd1FJV6DxePmg8SNVmRDOa5if)
