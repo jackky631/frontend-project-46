@@ -2,21 +2,46 @@
 
 import _ from 'lodash'
 
-export default (parseFile1, parseFile2) => {
-  const keysFile1 = Object.keys(parseFile1)
-  const keysFile2 = Object.keys(parseFile2)
-  const sortedAllKeys = _.sortBy(_.union(keysFile1, keysFile2))
-  const result = sortedAllKeys.map((key) => {
-    if (!_.has(parseFile1, key)) {
-      return { key, status: 'secondFile', value: parseFile2[key] }
+const comparison = (obj1, obj2) => {
+  const allKeys = _.sortBy(_.union(_.keys(obj1), _.keys(obj2))).map((key) => {
+    const oldValue = obj1[key]
+    const newValue = obj2[key]
+    if (!_.has(obj2, key)) {
+      return {
+        action: 'deleted',
+        key,
+        oldValue,
+      }
     }
-    if (!_.has(parseFile2, key)) {
-      return { key, status: 'firstFile', value: parseFile1[key] }
+    if (!_.has(obj1, key)) {
+      return {
+        action: 'added',
+        key,
+        newValue,
+      }
     }
-    if (parseFile1[key] !== parseFile2[key]) {
-      return { key, status: 'diffValues', oldValue: parseFile1[key], newValue: parseFile2[key] }
+    if (_.isObject(oldValue) && _.isObject(newValue)) {
+      return {
+        action: 'nested',
+        key,
+        children: comparison(oldValue, newValue),
+      }
     }
-    return { key, status: 'sameValues', value: parseFile1[key] }
+    if (oldValue !== newValue) {
+      return {
+        action: 'changed',
+        key,
+        oldValue,
+        newValue,
+      }
+    }
+    return {
+      action: 'unchanged',
+      key,
+      oldValue,
+    }
   })
-  return result
+  return allKeys
 }
+
+export default comparison
