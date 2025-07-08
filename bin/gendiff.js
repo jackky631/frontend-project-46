@@ -1,6 +1,7 @@
 #!/usr/bin/env node
+/* eslint-disable no-undef */
 
-import { genDiff } from '../src/index.js'
+import genDiff from '../src/index.js'
 import { Command } from 'commander'
 const program = new Command()
 
@@ -14,4 +15,4 @@ program
     console.log(genDiff(filepath1, filepath2, option.format))
   })
 
-program.parse()
+program.parse(process.argv)
