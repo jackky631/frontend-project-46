@@ -1,9 +1,9 @@
 import _ from 'lodash'
 
 const symbols = {
-  added: '+ ',
-  deleted: '- ',
-  space: '  ',
+  added: ' + ',
+  deleted: ' - ',
+  space: '   ',
 }
 
 function getSpace(depth, symbol) {
